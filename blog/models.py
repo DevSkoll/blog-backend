@@ -27,11 +27,11 @@ class Post(models.Model):
     meta_description = models.CharField(max_length=150, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
-    published_date = models.DateTimeField(blank=True, null=True)
+    publish_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
 
     author = models.ForeignKey(Profile, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
 
     class Meta:
-        ordering = ['-published_date']
+        ordering = ['-publish_date']
